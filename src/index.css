@@ -14,24 +14,101 @@ code {
 
 .jobcards{
   display: flex;
-  width: 100%;
+  width: 90%;
+  margin:auto;
   flex-wrap: wrap;
+  margin-top:20px;
+  align-items: center;
+  box-shadow: -1px 1px 4px -2px rgba(0,0,0,0.75);
+  -webkit-box-shadow: -1px 1px 4px -2px rgba(0,0,0,0.75);
+  -moz-box-shadow: -1px 1px 4px -2px rgba(0,0,0,0.75);
+  border-radius: 5px;
+  padding: 5px;
 }
 
 .jobs{
   width:100%;
   display: flex;
   justify-content: space-around;
+  background-color: white;
+  align-items: center;
 }
 
 .jobs img{
   height: 80px;
   width: 80px;
   object-fit: contain;
-  border:1px solid black;
+  
 }
 
 .part{
   width: 20%;
   text-align: center;
 }
+
+.searchbar{
+  display: flex;
+  justify-content: space-around;
+  width:95%;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  position: sticky;
+ 
+}
+
+.main{
+  width:85%;
+  margin: auto;
+  margin-top: 50px;
+  background-color: #FBFBFB;
+}
+
+.nav{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 5px;
+  box-shadow: -1px 1px 4px -2px rgba(0,0,0,0.75);
+  
+  
+}
+
+.nav img{
+  height:50px;
+  width:100px;
+}
+
+.tabs{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+
+
+.nav-right{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-right img{
+  height:50px;
+  width: 50px;
+}
+
+.active{
+  border-bottom: 2px solid black;
+}
+
+.heading{
+  font-size: 16px;
+  font-weight: 500;
+}
+

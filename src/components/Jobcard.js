@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button';
 function Jobcard(props){
-    const {job}=props;
-    console.log(job);
+    const {job,handleToaster}=props;
+    
     return(
         <div className="jobs">
             <div >
@@ -9,35 +9,35 @@ function Jobcard(props){
             </div>
 
             <div className="part">
-                <div>
-                    <h4>{job.position}</h4>
+                <div className="heading">
+                    <p>{job.position}</p>
                 </div>
                 <p>{job.companyName}</p>  
             </div>
 
             <div className="part">
-                <div>
-                    <h4>{job.location},India</h4>
+                <div className="heading">
+                    <p>{job.location},India</p>
                 </div>
                 <p>Location</p>  
             </div>
 
             <div className="part">
-                <div>
-                    <h4>{job.experienceRange.min}-{job.experienceRange.max} Years</h4>
+                <div className="heading">
+                    <p>{job.experienceRange.min}-{job.experienceRange.max} Years</p>
                 </div>
                 <p>Experiance</p>     
             </div>
 
             <div className="part">
-                <div>
-                   
+                <div className="heading">
+                   <p>{ job.requiredSkills.map((elem)=>(<span style= {{textTransform: 'capitalize'}} >{elem+" "}</span>))}</p>
                 </div>
                 <p>Skills</p>    
             </div>
 
             <div>
-                <Button variant="contained">Apply</Button>
+                <Button variant="contained" onClick={()=>{handleToaster(job.companyName)}}>Apply</Button>
             </div>
         </div>
     )

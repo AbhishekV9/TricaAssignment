@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 
 
-
+import Alert from '@mui/material/Alert';
 import jobs from '../utils/jobs.json';
 import Navbar from "./Navbar";
 import {AddJobs} from "../actions";
@@ -13,26 +13,51 @@ import Searchbar from "./Searchbar"
 
 
 class App extends Component{
-    
+    constructor(){
+        super();
+        this.state={
+            showToaster:false,
+            companyName:""
+        }
+    }
     componentDidMount(){
         this.props.dispatch(AddJobs(jobs));
     }
+
+    handleToaster=(companyName)=>{
+        this.setState({
+            showToaster:true,
+            companyName
+        })
+        setTimeout(()=>{
+            this.setState({
+                showToaster:false,
+                companyName:""
+            })
+        },5000)
+    }
     
     render(){
-        const {jobs} =this.props;
-
+        const {jobs} =this.props; 
         return(
-            <div>
+            <div className="main">
+
+                <div> 
+                    {this.state.showToaster && <Alert severity="success" color="info">
+                        Successfully Applied to {this.state.companyName}
+                    </Alert>}
+                </div>
+
                 <div>
                     <Navbar/>
                 </div>
-                <div>
+                <div className="as">
                     <Searchbar />
                 </div>
                 
                 {jobs.map((job,index)=>(
                     <div className="jobcards">
-                        <Jobcard job={job} key={index}/>
+                        <Jobcard job={job} key={job._id} handleToaster={this.handleToaster} />
                     </div>
                 ))}
                 

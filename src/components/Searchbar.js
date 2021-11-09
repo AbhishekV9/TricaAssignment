@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import {connect } from 'react-redux';
 
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -8,13 +9,16 @@ import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
 import SearchIcon from '@mui/icons-material/Search';
 
+import {filterJobs} from "../actions";
 
-function Searchbar(){
+
+function Searchbar(props){
     const [ searchBar, setSearchbar] =useState("");
     const [all , setAll ] =useState(false);
     const [free , setFree ]= useState(false);
     const [part , setPart ]= useState(false);
     const [full ,setFull ]=useState(false);
+    
     
     const handleAll=()=>{
         setAll(!all);
@@ -39,12 +43,45 @@ function Searchbar(){
     }
 
     const applyJob=()=>{
+        const {jobs,dispatch}=props;
         
+        const newValue=searchBar.toLowerCase();
+        const filteredArray=jobs.filter((job)=>{
+            return job.position
+            .toLowerCase()
+            .includes(newValue) || job.location
+            .toLowerCase()
+            .includes(newValue) || job.companyName
+            .toLowerCase()
+            .includes(newValue);
+        })
+        
+        if(all && free){
+            const filteredArray2=filteredArray.filter((job)=>{
+                return job.jobType
+                .includes("Freelancer");
+            })
+            dispatch(filterJobs(filteredArray2));
+        }else if(all && part){
+            const filteredArray2=filteredArray.filter((job)=>{
+                return job.jobType
+                .includes("Part Time")
+            });
+            dispatch(filterJobs(filteredArray2));
+        }else if(all && full){
+            const filteredArray2=filteredArray.filter((job)=>{
+                return job.jobType
+                .includes("Full Time")
+            });
+            dispatch(filterJobs(filteredArray2));
+        }else{
+            dispatch(filterJobs(filteredArray));
+        }
     }
 
     return(
         
-        <div>
+        <div  className="searchbar">
             <div>
             <Paper
                 component="form"
@@ -65,7 +102,7 @@ function Searchbar(){
             </Paper>
             </div>
 
-            <div>
+            <div >
                 <FormControlLabel control={<Checkbox  />} label="All" onChange={handleAll} />
             </div>
             <div>
@@ -78,9 +115,19 @@ function Searchbar(){
                 <FormControlLabel control={<Checkbox  />} label="Freelancer" onChange={handleFree} />
             </div>
             <div >
-                <Button variant="contained" onClick={()=> applyJob() } >Contained</Button>
+                <Button variant="contained" onClick={()=> applyJob() } >Find Job</Button>
             </div>
         </div>
     )
 }
-export default Searchbar;
+
+function mapStatetoprops(state){
+    return{
+      jobs:state.jobs
+    }
+  }
+  
+  //using connect to connect this component to global store
+  const connectedComponent=connect(mapStatetoprops)(Searchbar);
+  
+  export default connectedComponent;
