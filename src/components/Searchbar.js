@@ -8,8 +8,8 @@ import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
 import SearchIcon from '@mui/icons-material/Search';
-
-import {filterJobs} from "../actions";
+import jobs1 from '../utils/jobs.json';
+import {filterJobs,AddJobs} from "../actions";
 
 
 function Searchbar(props){
@@ -42,11 +42,12 @@ function Searchbar(props){
         setSearchbar(newValue);
     }
 
-    const applyJob=()=>{
-        const {jobs,dispatch}=props;
-        
+    const applyJob=async ()=>{
+        console.log(all,full,part,free)
+        await props.dispatch(AddJobs(jobs1))
+        const {dispatch}=props;
         const newValue=searchBar.toLowerCase();
-        const filteredArray=jobs.filter((job)=>{
+        const filteredArray=jobs1.filter((job)=>{
             return job.position
             .toLowerCase()
             .includes(newValue) || job.location
@@ -55,28 +56,59 @@ function Searchbar(props){
             .toLowerCase()
             .includes(newValue);
         })
-        
-        if(all && free){
+        console.log("asasas",filteredArray);
+        if(all){
+            dispatch(filterJobs(filteredArray));
+        }else if(free && full && part){
+            const filteredArray2=filteredArray.filter((job)=>{
+                return job.jobType
+                .includes("Freelancer") || job.jobType
+                .includes("Part Time") || job.jobType
+                .includes("Full Time") ;
+            })
+            dispatch(filterJobs(filteredArray2));
+        }else if(free && part){
+            const filteredArray2=filteredArray.filter((job)=>{
+                return job.jobType
+                .includes("Part Time") || job.jobType
+                .includes("Freelancer");
+                
+            });
+            dispatch(filterJobs(filteredArray2));
+        }else if(free && full){
+            const filteredArray2=filteredArray.filter((job)=>{
+                return job.jobType
+                .includes("Full Time") || job.jobType
+                .includes("Freelancer");
+            });
+            dispatch(filterJobs(filteredArray2));
+        }else if(part && full){
+            const filteredArray2=filteredArray.filter((job)=>{
+                return job.jobType
+                .includes("Full Time") || job.jobType
+                .includes("Part Time");
+            });
+            dispatch(filterJobs(filteredArray2));
+        }else if(full){
+            const filteredArray2=filteredArray.filter((job)=>{
+                return job.jobType
+                .includes("Full Time");
+            });
+            dispatch(filterJobs(filteredArray2));
+        }else if(part){
+            const filteredArray2=filteredArray.filter((job)=>{
+                return job.jobType
+                .includes("Part Time");
+            });
+            dispatch(filterJobs(filteredArray2));
+        }else if(free){
             const filteredArray2=filteredArray.filter((job)=>{
                 return job.jobType
                 .includes("Freelancer");
-            })
-            dispatch(filterJobs(filteredArray2));
-        }else if(all && part){
-            const filteredArray2=filteredArray.filter((job)=>{
-                return job.jobType
-                .includes("Part Time")
             });
             dispatch(filterJobs(filteredArray2));
-        }else if(all && full){
-            const filteredArray2=filteredArray.filter((job)=>{
-                return job.jobType
-                .includes("Full Time")
-            });
-            dispatch(filterJobs(filteredArray2));
-        }else{
-            dispatch(filterJobs(filteredArray));
         }
+        
     }
 
     return(

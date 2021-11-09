@@ -3,7 +3,7 @@ function Jobcard(props){
     const {job,handleToaster}=props;
     
     return(
-        <div className="jobs">
+        <div className="jobs" >
             <div >
                 <img src={job.companyLogo} alt="company-logo" />
             </div>
@@ -31,7 +31,7 @@ function Jobcard(props){
 
             <div className="part">
                 <div className="heading">
-                   <p>{ job.requiredSkills.map((elem)=>(<span style= {{textTransform: 'capitalize'}} >{elem+" "}</span>))}</p>
+                   <p>{ job.requiredSkills.map((elem,index)=>(<span style= {{textTransform: 'capitalize'}} key={index}>{elem+" "}</span>))}</p>
                 </div>
                 <p>Skills</p>    
             </div>

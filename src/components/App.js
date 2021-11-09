@@ -57,9 +57,10 @@ class App extends Component{
                 
                 {jobs.map((job,index)=>(
                     <div className="jobcards">
-                        <Jobcard job={job} key={job._id} handleToaster={this.handleToaster} />
+                        <Jobcard  key={index} job={job} handleToaster={this.handleToaster} />
                     </div>
                 ))}
+                
                 
             </div>
         );
