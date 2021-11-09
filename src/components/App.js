@@ -38,6 +38,7 @@ class App extends Component{
     render(){
         const {jobs} =this.props; 
         return(
+         <div>
             <div className="main">
 
                 <div> 
@@ -62,11 +63,12 @@ class App extends Component{
                     ))}
                 </div>
                 
-                <div>
-                    <Footer />
-                </div>
-
             </div>
+
+            <div>
+                <  Footer />
+            </div>
+         </div>
         );
     }
 }
