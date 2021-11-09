@@ -56,7 +56,7 @@ function Searchbar(props){
             .toLowerCase()
             .includes(newValue);
         })
-        console.log("asasas",filteredArray);
+        
         if(all){
             dispatch(filterJobs(filteredArray));
         }else if(free && full && part){
@@ -110,7 +110,7 @@ function Searchbar(props){
         }else{
             dispatch(filterJobs(filteredArray));
         }
-        
+        setSearchbar("");
     }
 
     return(
@@ -128,6 +128,7 @@ function Searchbar(props){
                     sx={{ ml: 1, flex: 1 }}
                     placeholder="Search By Keywords"
                     inputProps={{ 'aria-label': 'search google maps' }} 
+                    value={searchBar}
                     onChange={ handleChange }
                 />
                 <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
