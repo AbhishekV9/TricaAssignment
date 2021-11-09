@@ -1,34 +1,53 @@
 import React,{ Component} from 'react';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
+import { connect } from 'react-redux';
+
+
+
+
 
 import jobs from '../utils/jobs.json';
 import Navbar from "./Navbar";
+import {AddJobs} from "../actions";
+import Jobcard from './Jobcard';
+import Searchbar from "./Searchbar"
 
-const Item = styled(Paper)(({ theme }) => ({
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }));
 
 class App extends Component{
     
     componentDidMount(){
-        console.log(jobs);
+        this.props.dispatch(AddJobs(jobs));
     }
+    
     render(){
+        const {jobs} =this.props;
+
         return(
-            <Grid container spacing={2}>
-                <Grid item xs={12}>
+            <div>
+                <div>
                     <Navbar/>
-                </Grid>
+                </div>
+                <div>
+                    <Searchbar />
+                </div>
                 
-            </Grid>
+                {jobs.map((job,index)=>(
+                    <div className="jobcards">
+                        <Jobcard job={job} key={index}/>
+                    </div>
+                ))}
+                
+            </div>
         );
     }
 }
 
-export default App;
+function mapStatetoprops(state){
+    return{
+      jobs:state.jobs
+    }
+  }
+  
+  //using connect to connect this component to global store
+  const connectedComponent=connect(mapStatetoprops)(App);
+  
+  export default connectedComponent;

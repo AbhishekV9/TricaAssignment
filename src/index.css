@@ -11,3 +11,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.jobcards{
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.jobs{
+  width:100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.jobs img{
+  height: 80px;
+  width: 80px;
+  object-fit: contain;
+  border:1px solid black;
+}
+
+.part{
+  width: 20%;
+  text-align: center;
+}

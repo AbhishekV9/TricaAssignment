@@ -12,5 +12,7 @@ export default function rootReducer(state=initialState,action){
                 jobs:action.jobs
             }
         }
+        default:
+            return state
     }
 }
