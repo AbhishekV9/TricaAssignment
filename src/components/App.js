@@ -56,8 +56,8 @@ class App extends Component{
 
                 <div className="jobcardcontainer">
                     {jobs.map((job,index)=>(
-                        <div className="jobcards">
-                            <Jobcard  key={index} job={job} handleToaster={this.handleToaster} />
+                        <div className="jobcards" key={index}>
+                            <Jobcard  job={job} handleToaster={this.handleToaster} />
                         </div>
                     ))}
                 </div>
