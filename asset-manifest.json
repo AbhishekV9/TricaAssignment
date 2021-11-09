@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/tricaAssesment/static/css/main.e1d850ad.chunk.css",
-    "main.js": "/tricaAssesment/static/js/main.d1669f9b.chunk.js",
-    "main.js.map": "/tricaAssesment/static/js/main.d1669f9b.chunk.js.map",
-    "runtime-main.js": "/tricaAssesment/static/js/runtime-main.dbe803b5.js",
-    "runtime-main.js.map": "/tricaAssesment/static/js/runtime-main.dbe803b5.js.map",
-    "static/js/2.f2096a9a.chunk.js": "/tricaAssesment/static/js/2.f2096a9a.chunk.js",
-    "static/js/2.f2096a9a.chunk.js.map": "/tricaAssesment/static/js/2.f2096a9a.chunk.js.map",
-    "index.html": "/tricaAssesment/index.html",
-    "static/css/main.e1d850ad.chunk.css.map": "/tricaAssesment/static/css/main.e1d850ad.chunk.css.map",
-    "static/js/2.f2096a9a.chunk.js.LICENSE.txt": "/tricaAssesment/static/js/2.f2096a9a.chunk.js.LICENSE.txt"
+    "main.css": "/tricaAssignment/static/css/main.e1d850ad.chunk.css",
+    "main.js": "/tricaAssignment/static/js/main.d1669f9b.chunk.js",
+    "main.js.map": "/tricaAssignment/static/js/main.d1669f9b.chunk.js.map",
+    "runtime-main.js": "/tricaAssignment/static/js/runtime-main.6b7ea972.js",
+    "runtime-main.js.map": "/tricaAssignment/static/js/runtime-main.6b7ea972.js.map",
+    "static/js/2.f2096a9a.chunk.js": "/tricaAssignment/static/js/2.f2096a9a.chunk.js",
+    "static/js/2.f2096a9a.chunk.js.map": "/tricaAssignment/static/js/2.f2096a9a.chunk.js.map",
+    "index.html": "/tricaAssignment/index.html",
+    "static/css/main.e1d850ad.chunk.css.map": "/tricaAssignment/static/css/main.e1d850ad.chunk.css.map",
+    "static/js/2.f2096a9a.chunk.js.LICENSE.txt": "/tricaAssignment/static/js/2.f2096a9a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.dbe803b5.js",
+    "static/js/runtime-main.6b7ea972.js",
     "static/js/2.f2096a9a.chunk.js",
     "static/css/main.e1d850ad.chunk.css",
     "static/js/main.d1669f9b.chunk.js"
