@@ -1,9 +1,7 @@
 import React,{ Component} from 'react';
 import { connect } from 'react-redux';
 
-
-
-
+import Footer from './Footer';
 import Alert from '@mui/material/Alert';
 import jobs from '../utils/jobs.json';
 import Navbar from "./Navbar";
@@ -34,7 +32,7 @@ class App extends Component{
                 showToaster:false,
                 companyName:""
             })
-        },5000)
+        },2000)
     }
     
     render(){
@@ -51,17 +49,23 @@ class App extends Component{
                 <div>
                     <Navbar/>
                 </div>
-                <div className="as">
+
+                <div>
                     <Searchbar />
                 </div>
+
+                <div className="jobcardcontainer">
+                    {jobs.map((job,index)=>(
+                        <div className="jobcards">
+                            <Jobcard  key={index} job={job} handleToaster={this.handleToaster} />
+                        </div>
+                    ))}
+                </div>
                 
-                {jobs.map((job,index)=>(
-                    <div className="jobcards">
-                        <Jobcard  key={index} job={job} handleToaster={this.handleToaster} />
-                    </div>
-                ))}
-                
-                
+                <div>
+                    <Footer />
+                </div>
+
             </div>
         );
     }

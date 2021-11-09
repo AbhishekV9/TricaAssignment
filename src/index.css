@@ -13,6 +13,7 @@ code {
 }
 
 .jobcards{
+ 
   display: flex;
   width: 90%;
   margin:auto;
@@ -24,6 +25,11 @@ code {
   -moz-box-shadow: -1px 1px 4px -2px rgba(0,0,0,0.75);
   border-radius: 5px;
   padding: 5px;
+}
+.jobcardcontainer{
+  margin-top: 10px;
+  height: 62vh;
+  overflow-y: scroll;
 }
 
 .jobs{
@@ -60,7 +66,7 @@ code {
 .main{
   width:85%;
   margin: auto;
-  margin-top: 50px;
+  margin-top: 40px;
   background-color: #FBFBFB;
 }
 
@@ -112,3 +118,20 @@ code {
   font-weight: 500;
 }
 
+.footer{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #293277;
+  color: white;
+  box-shadow: -1px 1px 4px -2px rgba(0,0,0,0.75);
+  font-size: 14px;
+}
+
+.leftpart{
+  margin-left: 25px;
+}
+.rightPart{
+  margin-right: 25px;
+}

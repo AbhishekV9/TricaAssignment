@@ -107,6 +107,8 @@ function Searchbar(props){
                 .includes("Freelancer");
             });
             dispatch(filterJobs(filteredArray2));
+        }else{
+            dispatch(filterJobs(filteredArray));
         }
         
     }
